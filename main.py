@@ -2,6 +2,7 @@
 from scenario import EmptyScenario, MazeScenario, ObstaclesScenario, WeightedScenario
 from dijkstra import Dijkstra
 from a_star import AStar
+from bfs import BFS
 from benchmark import run_test, print_summary
 
 
@@ -22,7 +23,7 @@ def render_grid(grid, path, start, goal):
             elif (x, y) in path_set:
                 row += "* "
             elif grid[y][x] == 0:
-                row += "# "
+                row += "# " 
             else:
                 row += ". "
         print(row)
@@ -39,7 +40,8 @@ def main():
 
     algorithms = [
         Dijkstra(),
-        AStar()
+        AStar(),
+        BFS()
     ]
 
     all_results = []
@@ -55,7 +57,7 @@ def main():
 
         for result in all_results:
             if result['scenario'] == "Weighted":
-                if result['algorithm'] == "A*":
+                if result['algorithm'] == "BFS":
                     print(f"\n  {result['algorithm']} - {result['scenario']} DETAILED STATISTICS")
                     print(f"  Algorithm:        {result['algorithm']}")
                     print(f"  Scenario:         {result['scenario']}")

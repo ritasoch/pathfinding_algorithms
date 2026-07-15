@@ -36,6 +36,9 @@ class BaseAlgorithm(ABC):
 
         self._reconstruct_path()
 
+        if self.cost == float('inf') and self.path:
+            self.cost = self._calculate_cost()
+
         return self._make_result()
 
     @abstractmethod
